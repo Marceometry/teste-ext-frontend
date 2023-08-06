@@ -1,10 +1,14 @@
 import { Button, Card, Input } from '@/components'
+import { api } from '@/services'
 import { Post } from '@/types'
 
-export default async function EditPost() {
-  const post: Post = await fetch('http://localhost:8000/posts/1').then((res) =>
-    res.json(),
-  )
+type PageProps = {
+  params: { id: string }
+}
+
+export default async function EditPost({ params: { id } }: PageProps) {
+  const response = await api.get(`/posts/${id}`)
+  const post: Post = response.data
 
   return (
     <>

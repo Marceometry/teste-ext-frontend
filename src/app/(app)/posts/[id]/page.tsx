@@ -1,14 +1,17 @@
 import { Card } from '@/components'
+import { api } from '@/services'
 import { Comment, Post } from '@/types'
 
-export default async function Post() {
-  const post: Post = await fetch('http://localhost:8000/posts/1').then((res) =>
-    res.json(),
-  )
+type PageProps = {
+  params: { id: string }
+}
 
-  const comments: Comment[] = await fetch(
-    'http://localhost:8000/comments/post/1',
-  ).then((res) => res.json())
+export default async function Post({ params: { id } }: PageProps) {
+  const response = await api.get(`/posts/${id}`)
+  const post: Post = response.data
+
+  const { data } = await api.get(`/comments/post/${id}`)
+  const comments: Comment[] = data
 
   return (
     <>
@@ -18,13 +21,19 @@ export default async function Post() {
         <Card.Description>{post.description}</Card.Description>
       </Card.Container>
 
-      <h2>Comments</h2>
-      {comments.map((comment) => (
-        <Card.Container size='sm'>
-          <Card.User id={comment.user.id}>{comment.user.name}</Card.User>
-          <Card.Description>{comment.description}</Card.Description>
-        </Card.Container>
-      ))}
+      {!comments.length ? (
+        <h2>Não há comentários</h2>
+      ) : (
+        <>
+          <h2>Comentários</h2>
+          {comments.map((comment) => (
+            <Card.Container size='sm'>
+              <Card.User id={comment.user.id}>{comment.user.name}</Card.User>
+              <Card.Description>{comment.description}</Card.Description>
+            </Card.Container>
+          ))}
+        </>
+      )}
     </>
   )
 }
