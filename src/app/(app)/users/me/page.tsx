@@ -1,8 +1,8 @@
 'use client'
-import { Button, Card } from '@/components'
+import { useEffect, useState } from 'react'
+import { Button, Card, FloatingLink } from '@/components'
 import { api } from '@/services'
 import { User } from '@/types'
-import { useEffect, useState } from 'react'
 
 export default function User() {
   const [isLoading, setIsLoading] = useState(true)
@@ -41,6 +41,8 @@ export default function User() {
           Excluir minha conta
         </Button>
       </Card.Container>
+
+      <FloatingLink href='/posts/new' />
     </>
   )
 }
