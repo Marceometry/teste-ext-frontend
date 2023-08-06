@@ -1,17 +1,19 @@
 import Link from 'next/link'
 import { Card } from '@/components'
+import { Post, User } from '@/types'
 
-const posts = new Array(10).fill('').map((_, index) => ({
-  id: index + 1,
-  title: 'Docs',
-  description:
-    'Find in-depth information about Next.js features and API. Find in-depth information about Next.js features and API.',
-}))
+export default async function User() {
+  const user: User = await fetch('http://localhost:8000/users/1').then((res) =>
+    res.json(),
+  )
 
-export default function User() {
+  const posts: Post[] = await fetch('http://localhost:8000/posts/user/1').then(
+    (res) => res.json(),
+  )
+
   return (
     <>
-      <h1 className='text-4xl font-semibold mb-4'>Marcelino</h1>
+      <h1 className='text-4xl font-semibold mb-4'>{user.name}</h1>
 
       <h2>Posts</h2>
       {posts.map((post) => (

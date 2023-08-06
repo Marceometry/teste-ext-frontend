@@ -1,24 +1,19 @@
-import Link from 'next/link'
 import { Card } from '@/components'
+import { Comment, Post } from '@/types'
 
-const post = {
-  id: 1,
-  title: 'Docs',
-  description:
-    'Find in-depth information about Next.js features and API. Find in-depth information about Next.js features and API.',
-}
+export default async function Post() {
+  const post: Post = await fetch('http://localhost:8000/posts/1').then((res) =>
+    res.json(),
+  )
 
-const comments = new Array(10).fill('').map((_, index) => ({
-  id: index + 1,
-  description:
-    'Find in-depth information about Next.js features and API. Find in-depth information about Next.js features and API.',
-}))
+  const comments: Comment[] = await fetch(
+    'http://localhost:8000/comments/post/1',
+  ).then((res) => res.json())
 
-export default function Post() {
   return (
     <>
       <Card.Container>
-        <Card.User id={1}>Marcelino</Card.User>
+        <Card.User id={post.user.id}>{post.user.name}</Card.User>
         <Card.Title>{post.title}</Card.Title>
         <Card.Description>{post.description}</Card.Description>
       </Card.Container>
@@ -26,7 +21,7 @@ export default function Post() {
       <h2>Comments</h2>
       {comments.map((comment) => (
         <Card.Container size='sm'>
-          <Card.User id={1}>Marcelino</Card.User>
+          <Card.User id={comment.user.id}>{comment.user.name}</Card.User>
           <Card.Description>{comment.description}</Card.Description>
         </Card.Container>
       ))}
