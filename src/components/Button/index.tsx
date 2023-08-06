@@ -21,7 +21,7 @@ export const Button = ({
         {children}
       </Link>
     ) : (
-      <button className={className} {...props}>
+      <button {...props} className={`${className} ${props.className}`}>
         {children}
       </button>
     )

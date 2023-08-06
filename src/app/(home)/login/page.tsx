@@ -10,7 +10,7 @@ export default function Login() {
         <Input placeholder='E-mail' />
         <Input placeholder='Senha' />
 
-        <Button type='submit'>Entrar</Button>
+        <Button>Entrar</Button>
       </form>
 
       <p className='text-xs w-64'>
