@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { User } from './User'
 
 export const Header = () => {
   return (
@@ -18,11 +19,7 @@ export const Header = () => {
           </Link>
         </div>
 
-        <div>
-          <Link href={`/users/${1}`} className='hover:underline'>
-            Marcelino
-          </Link>
-        </div>
+        <User />
       </div>
     </header>
   )
