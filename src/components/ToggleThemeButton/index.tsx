@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 
 export function ToggleThemeButton() {
   function prefersDark() {
+    if (typeof localStorage === 'undefined') return null
     return (
       localStorage.theme === 'dark' ||
       (!('theme' in localStorage) &&
@@ -32,7 +33,7 @@ export function ToggleThemeButton() {
   }
 
   useEffect(() => {
-    updateTheme(theme)
+    updateTheme(prefersDark() ? 'dark' : 'light')
   }, [])
 
   return (
