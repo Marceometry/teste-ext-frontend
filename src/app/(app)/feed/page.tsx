@@ -1,12 +1,26 @@
 'use client'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 import { Card, AddPostButton, PostUserActions } from '@/components'
 import { api } from '@/services'
 import { Post } from '@/types'
 
-export default async function Feed() {
-  const response = await api.get('/posts')
-  const posts: Post[] = response.data
+export default function Feed() {
+  const [isLoading, setIsLoading] = useState(true)
+  const [posts, setPosts] = useState<Post[] | null>(null)
+
+  async function getData() {
+    const { data } = await api.get('/posts')
+    setPosts(data)
+    setIsLoading(false)
+  }
+
+  useEffect(() => {
+    getData()
+  }, [])
+
+  if (isLoading) return null
+  if (!posts) throw new Error()
 
   return (
     <>

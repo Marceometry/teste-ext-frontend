@@ -1,4 +1,5 @@
 'use client'
+import { useState, useEffect } from 'react'
 import { AddPostButton } from '@/components'
 import { Post, User } from '@/types'
 import { api } from '@/services'
@@ -8,12 +9,25 @@ type PageProps = {
   params: { id: string }
 }
 
-export default async function User({ params: { id } }: PageProps) {
-  const response = await api.get(`/users/${id}`)
-  const user: User = response.data
+export default function User({ params: { id } }: PageProps) {
+  const [isLoading, setIsLoading] = useState(true)
+  const [user, setUser] = useState<User | null>(null)
+  const [posts, setPosts] = useState<Post[]>([])
 
-  const { data } = await api.get(`/posts/user/${id}`)
-  const posts: Post[] = data
+  async function getData() {
+    const response = await api.get(`/users/${id}`)
+    setUser(response.data)
+    const { data } = await api.get(`/posts/user/${id}`)
+    setPosts(data)
+    setIsLoading(false)
+  }
+
+  useEffect(() => {
+    getData()
+  }, [])
+
+  if (isLoading) return null
+  if (!user) throw new Error()
 
   return (
     <>
