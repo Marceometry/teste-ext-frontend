@@ -7,12 +7,16 @@ import {
   ThumbsDown,
   ThumbsUp,
   Trash,
+  Moon,
+  Sun,
 } from 'phosphor-react'
 
 const icons = {
   chat: Chat,
   edit: PencilSimple,
   plus: Plus,
+  moon: Moon,
+  sun: Sun,
   thumbsDown: ThumbsDown,
   thumbsUp: ThumbsUp,
   trash: Trash,

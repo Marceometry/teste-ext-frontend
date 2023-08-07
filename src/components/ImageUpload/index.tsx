@@ -51,7 +51,7 @@ export function ImageUpload({
                   className={`w-full h-full rounded-md p-2 grid place-items-center ${
                     isDragging
                       ? 'bg-zinc-200 dark:bg-slate-900'
-                      : 'hover:bg-zinc-200 dark:hover:bg-slate-900'
+                      : 'hover:bg-slate-100 dark:hover:bg-slate-900'
                   } transition-colors`}
                   onClick={onImageUpload}
                   {...dragProps}

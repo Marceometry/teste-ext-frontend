@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { User } from './User'
+import { ToggleThemeButton } from '..'
 
 export const Header = () => {
   return (
@@ -19,7 +20,10 @@ export const Header = () => {
           </Link>
         </div>
 
-        <User />
+        <div className='flex gap-6'>
+          <User />
+          <ToggleThemeButton />
+        </div>
       </div>
     </header>
   )
