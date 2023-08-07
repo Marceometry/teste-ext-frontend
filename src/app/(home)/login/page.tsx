@@ -10,7 +10,7 @@ export default function Login() {
 
       <p className='text-xs w-64'>
         Ainda não tem uma conta?{' '}
-        <Link href='/sign-in' className='text-sky-500'>
+        <Link href='/sign-in' className='text-sky-700 dark:text-sky-500'>
           Cadastre-se aqui
         </Link>
         .

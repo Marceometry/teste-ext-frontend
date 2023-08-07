@@ -59,7 +59,7 @@ export function PostUserActions({ post, comments, updateComments }: Props) {
 
   return (
     <div>
-      <div className='mt-3 flex flex-wrap gap-1 justify-between text-neutral-300'>
+      <div className='mt-3 flex flex-wrap gap-1 justify-between text-neutral-600 dark:text-neutral-300'>
         <div className='flex gap-4'>
           <IconButton
             icon='thumbsUp'

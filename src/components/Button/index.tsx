@@ -31,8 +31,8 @@ export const Button = ({
     <Component
       className={`w-full p-2 text-center rounded-lg transition-colors border ${
         variant === 'fill'
-          ? `border-sky-800 bg-sky-800 hover:bg-sky-900`
-          : `border-transparent text-sky-500 hover:border-sky-900`
+          ? `text-white border-sky-800 bg-sky-800 hover:bg-sky-900`
+          : `border-transparent dark:text-sky-500 text-sky-800 hover:border-sky-900`
       } ${props.className}`}
     />
   )
