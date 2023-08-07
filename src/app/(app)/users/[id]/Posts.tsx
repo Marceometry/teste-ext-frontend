@@ -21,9 +21,15 @@ export function Posts({ posts }: Props) {
       {postList.map((post) => (
         <Card.Container key={post.id}>
           <div className='flex justify-between'>
-            <Link href={`/posts/${post.id}`} className='flex-1'>
-              <Card.Title>{post.title}</Card.Title>
-              <Card.Description>{post.description}</Card.Description>
+            <Link
+              href={`/posts/${post.id}`}
+              className='flex-1 grid grid-cols-2 gap-4'
+            >
+              <div>
+                <Card.Title>{post.title}</Card.Title>
+                <Card.Description>{post.description}</Card.Description>
+              </div>
+              <Card.Image src={post.imageUrl} />
             </Link>
 
             <PostOwnerActions post={post} removePost={removePost} />

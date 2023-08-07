@@ -13,6 +13,7 @@ export function User() {
   async function getProfile() {
     try {
       const token = localStorage.getItem('token')
+      if (!token) return
       const { data } = await api.get('/auth/profile', {
         headers: { Authorization: `Bearer ${token}` },
       })

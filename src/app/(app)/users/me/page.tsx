@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react'
-import { Button, Card, FloatingLink } from '@/components'
+import { Button, Card, AddPostButton } from '@/components'
 import { api } from '@/services'
 import { User } from '@/types'
 import Link from 'next/link'
@@ -73,7 +73,7 @@ export default function Profile() {
         </div>
       </Card.Container>
 
-      <FloatingLink href='/posts/new' />
+      <AddPostButton />
     </>
   )
 }

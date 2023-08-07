@@ -1,8 +1,8 @@
 'use client'
+import { AddPostButton } from '@/components'
 import { Post, User } from '@/types'
 import { api } from '@/services'
 import { Posts } from './Posts'
-import { FloatingLink } from '@/components'
 
 type PageProps = {
   params: { id: string }
@@ -25,7 +25,7 @@ export default async function User({ params: { id } }: PageProps) {
         <Posts posts={posts} />
       )}
 
-      <FloatingLink href='/posts/new' />
+      <AddPostButton />
     </>
   )
 }

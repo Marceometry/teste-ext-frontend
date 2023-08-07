@@ -1,9 +1,9 @@
 'use client'
+import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import { Button, Card, FloatingLink, Input } from '@/components'
+import { Button, Card, AddPostButton, Input } from '@/components'
 import { api } from '@/services'
 import { User } from '@/types'
-import { useRouter } from 'next/navigation'
 
 export default function EditProfile() {
   const router = useRouter()
@@ -82,7 +82,7 @@ export default function EditProfile() {
         </form>
       </Card.Container>
 
-      <FloatingLink href='/posts/new' />
+      <AddPostButton />
     </>
   )
 }

@@ -1,3 +1,4 @@
+'use client'
 import { Card } from '@/components'
 import { api } from '@/services'
 import { Post } from '@/types'

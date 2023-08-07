@@ -34,6 +34,9 @@ export function PostWithComments({ post, comments }: Props) {
         </div>
         <Card.Title>{post.title}</Card.Title>
         <Card.Description>{post.description}</Card.Description>
+        <div className='mt-2'>
+          <Card.Image src={post.imageUrl} />
+        </div>
         <PostUserActions
           post={post}
           comments={commentList}
