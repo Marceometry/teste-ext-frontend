@@ -15,6 +15,12 @@ $ npm install
 
 ## Rodando o app
 
+Crie um arquivo `.env.local`.
+
+Adicione a url do backend (Passos para a configuração [aqui](https://github.com/Marceometry/teste-ext-backend)) na variável `NEXT_PUBLIC_API_URL`.
+
+Rode o comando abaixo:
+
 ```bash
 npm run dev
 ```
