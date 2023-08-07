@@ -5,7 +5,7 @@ import { api } from '@/services'
 import { User } from '@/types'
 import Link from 'next/link'
 
-export default function User() {
+export default function Profile() {
   const [isLoading, setIsLoading] = useState(true)
   const [data, setData] = useState<User | null>(null)
 
@@ -43,7 +43,11 @@ export default function User() {
           <Button className='self-end !w-44 !border-red-800 !bg-red-800 hover:!bg-red-900'>
             Excluir minha conta
           </Button>
-          <Button className='!w-44 self-end block' variant='ghost'>
+          <Button
+            className='!w-44 self-end block'
+            variant='ghost'
+            href='/users/me/edit'
+          >
             Editar informações
           </Button>
         </div>

@@ -11,15 +11,7 @@ export default async function Feed() {
   return (
     <>
       {posts.length ? (
-        [
-          ...posts,
-          ...posts,
-          ...posts,
-          ...posts,
-          ...posts,
-          ...posts,
-          ...posts,
-        ].map((post) => (
+        posts.map((post) => (
           <Card.Container key={post.id}>
             <Card.User id={post.user.id}>{post.user.name}</Card.User>
             <Link href={`/posts/${post.id}`}>

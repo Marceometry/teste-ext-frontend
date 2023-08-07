@@ -38,10 +38,10 @@ export const EditCommentForm = ({
   return (
     <form onSubmit={handleSubmit} className='flex gap-3'>
       <Input
-        name='description'
-        placeholder={commentDescription}
-        defaultValue={commentDescription}
         className='w-full'
+        name='description'
+        placeholder='Comentário'
+        defaultValue={commentDescription}
       />
 
       <div className='flex gap-2 self-end'>
