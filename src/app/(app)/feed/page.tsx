@@ -1,3 +1,4 @@
+'use client'
 import Link from 'next/link'
 import { Card, FloatingLink, PostUserActions } from '@/components'
 import { api } from '@/services'

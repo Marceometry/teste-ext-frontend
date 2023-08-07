@@ -1,7 +1,8 @@
-import Link from 'next/link'
-import { Card, PostUserActions } from '@/components'
+'use client'
 import { Post, User } from '@/types'
 import { api } from '@/services'
+import { Posts } from './Posts'
+import { FloatingLink } from '@/components'
 
 type PageProps = {
   params: { id: string }
@@ -21,19 +22,10 @@ export default async function User({ params: { id } }: PageProps) {
       {!posts.length ? (
         <h2>Não há posts publicados</h2>
       ) : (
-        <>
-          <h2>Posts</h2>
-          {posts.map((post) => (
-            <Card.Container key={post.id}>
-              <Link href={`/posts/${post.id}`}>
-                <Card.Title>{post.title}</Card.Title>
-                <Card.Description>{post.description}</Card.Description>
-              </Link>
-              <PostUserActions post={post} />
-            </Card.Container>
-          ))}
-        </>
+        <Posts posts={posts} />
       )}
+
+      <FloatingLink href='/posts/new' />
     </>
   )
 }

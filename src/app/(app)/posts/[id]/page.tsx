@@ -1,3 +1,4 @@
+'use client'
 import { api } from '@/services'
 import { Comment, Post } from '@/types'
 import { PostWithComments } from './PostWithComments'

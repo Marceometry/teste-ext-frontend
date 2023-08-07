@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { Button, Card, FloatingLink } from '@/components'
 import { api } from '@/services'
 import { User } from '@/types'
+import Link from 'next/link'
 
 export default function User() {
   const [isLoading, setIsLoading] = useState(true)
@@ -32,7 +33,11 @@ export default function User() {
       <Card.Container>
         <h1 className='text-4xl font-semibold mb-4'>{data.name}</h1>
 
-        <p>{data.email}</p>
+        <p className='mb-2'>{data.email}</p>
+
+        <Link href={`/users/${data.id}`} className='hover:underline'>
+          Meus posts
+        </Link>
 
         <div className='mt-8 flex gap-2'>
           <Button className='self-end !w-44 !border-red-800 !bg-red-800 hover:!bg-red-900'>

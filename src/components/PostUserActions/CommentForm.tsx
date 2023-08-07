@@ -33,7 +33,12 @@ export function CommentForm({ onClose, postId, addComment }: Props) {
       <Input name='description' placeholder='Comentário' className='w-full' />
 
       <div className='flex gap-3 justify-end'>
-        <Button className='!w-fit !px-4' variant='ghost' onClick={onClose}>
+        <Button
+          className='!w-fit !px-4'
+          variant='ghost'
+          type='button'
+          onClick={onClose}
+        >
           Cancelar
         </Button>
         <Button className='!w-fit !px-4'>Enviar</Button>

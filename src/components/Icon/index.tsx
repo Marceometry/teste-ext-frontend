@@ -3,6 +3,7 @@ import {
   IconProps,
   Chat,
   Plus,
+  PencilSimple,
   ThumbsDown,
   ThumbsUp,
   Trash,
@@ -10,6 +11,7 @@ import {
 
 const icons = {
   chat: Chat,
+  edit: PencilSimple,
   plus: Plus,
   thumbsDown: ThumbsDown,
   thumbsUp: ThumbsUp,
