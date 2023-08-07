@@ -21,7 +21,7 @@ export const Button = ({
         {children}
       </Link>
     ) : (
-      <button {...props} className={`${className} ${props.className}`}>
+      <button {...props} className={className}>
         {children}
       </button>
     )
@@ -31,9 +31,9 @@ export const Button = ({
     <Component
       className={`w-full p-2 text-center rounded-lg transition-colors border ${
         variant === 'fill'
-          ? 'border-sky-800 bg-sky-800 hover:bg-sky-900'
-          : 'border-transparent text-sky-500 hover:border-sky-900'
-      }`}
+          ? `border-sky-800 bg-sky-800 hover:bg-sky-900`
+          : `border-transparent text-sky-500 hover:border-sky-900`
+      } ${props.className}`}
     />
   )
 }

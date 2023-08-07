@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Card } from '@/components'
+import { Card, PostUserActions } from '@/components'
 import { Post, User } from '@/types'
 import { api } from '@/services'
 
@@ -24,11 +24,12 @@ export default async function User({ params: { id } }: PageProps) {
         <>
           <h2>Posts</h2>
           {posts.map((post) => (
-            <Card.Container>
+            <Card.Container key={post.id}>
               <Link href={`/posts/${post.id}`}>
                 <Card.Title>{post.title}</Card.Title>
                 <Card.Description>{post.description}</Card.Description>
               </Link>
+              <PostUserActions post={post} />
             </Card.Container>
           ))}
         </>

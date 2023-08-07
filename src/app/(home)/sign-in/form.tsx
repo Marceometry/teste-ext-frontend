@@ -1,10 +1,16 @@
 'use client'
+import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { Button, Input } from '@/components'
 import { api } from '@/services'
 
 export const SignInForm = () => {
   const router = useRouter()
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token) router.replace('/feed')
+  }, [])
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -25,7 +31,15 @@ export const SignInForm = () => {
     try {
       await api.post('/users', data)
       const response = await api.post('/auth/login', data)
-      localStorage.setItem('token', response.data.access_token)
+
+      const token = response.data.access_token
+      localStorage.setItem('token', token)
+
+      const profile = await api.get('/auth/profile', {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      localStorage.setItem('user', JSON.stringify(profile.data))
+
       router.push('/feed')
     } catch (error) {
       alert('Algo deu errado')

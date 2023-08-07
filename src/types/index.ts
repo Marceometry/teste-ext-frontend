@@ -8,7 +8,12 @@ export interface Post {
   id: number
   title: string
   description: string
+  likes: number
+  dislikes: number
+  comments: Comment[]
   user: User
+  likedByUsers: User[]
+  dislikedByUsers: User[]
 }
 
 export interface Comment {

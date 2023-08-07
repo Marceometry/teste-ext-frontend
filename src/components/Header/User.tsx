@@ -1,10 +1,12 @@
 'use client'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
 import { api } from '@/services'
 import { User } from '@/types'
-import Link from 'next/link'
-import { useEffect, useState } from 'react'
 
 export function User() {
+  const router = useRouter()
   const [isLoading, setIsLoading] = useState(true)
   const [data, setData] = useState<User | null>(null)
 
@@ -29,12 +31,22 @@ export function User() {
 
   if (isLoading) return null
 
+  function logout() {
+    localStorage.clear()
+    router.push('/login')
+  }
+
   return (
-    <div>
+    <div className='flex gap-4'>
       {data ? (
-        <Link href='/users/me' className='hover:underline'>
-          {data.name}
-        </Link>
+        <>
+          <Link href='/users/me' className='hover:underline'>
+            Perfil ({data.name})
+          </Link>
+          <button onClick={logout} className='hover:underline'>
+            Sair
+          </button>
+        </>
       ) : (
         <Link href='/login' className='hover:underline'>
           Entrar

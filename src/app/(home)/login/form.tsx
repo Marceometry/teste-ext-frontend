@@ -1,8 +1,8 @@
 'use client'
+import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { Button, Input } from '@/components'
 import { api } from '@/services'
-import { useEffect } from 'react'
 
 export const LoginForm = () => {
   const router = useRouter()
@@ -22,11 +22,16 @@ export const LoginForm = () => {
       email,
       password,
     }
-    console.log(data)
 
     try {
       const response = await api.post('/auth/login', data)
-      localStorage.setItem('token', response.data.access_token)
+      const token = response.data.access_token
+      localStorage.setItem('token', token)
+
+      const profile = await api.get('/auth/profile', {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      localStorage.setItem('user', JSON.stringify(profile.data))
       router.push('/feed')
     } catch (error) {
       alert('Algo deu errado')

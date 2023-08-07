@@ -34,12 +34,14 @@ export default function User() {
 
         <p>{data.email}</p>
 
-        <Button className='mt-8 w-44 self-end block' variant='ghost'>
-          Editar informações
-        </Button>
-        <Button className='mt-1 w-44 self-end border-red-800 bg-red-800 hover:border-red-900 hover:bg-red-900'>
-          Excluir minha conta
-        </Button>
+        <div className='mt-8 flex gap-2'>
+          <Button className='self-end !w-44 !border-red-800 !bg-red-800 hover:!bg-red-900'>
+            Excluir minha conta
+          </Button>
+          <Button className='!w-44 self-end block' variant='ghost'>
+            Editar informações
+          </Button>
+        </div>
       </Card.Container>
 
       <FloatingLink href='/posts/new' />
