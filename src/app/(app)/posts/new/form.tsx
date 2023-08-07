@@ -24,7 +24,7 @@ export const NewPostForm = () => {
       const token = localStorage.getItem('token')
       const config = { headers: { Authorization: `Bearer ${token}` } }
 
-      let imageUrl = ''
+      let imageUrl = null
       if (image?.file) {
         const form = new FormData()
         form.append('file', image.file)
