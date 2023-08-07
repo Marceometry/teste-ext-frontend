@@ -4,8 +4,10 @@ import { Button, Card, FloatingLink } from '@/components'
 import { api } from '@/services'
 import { User } from '@/types'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 export default function Profile() {
+  const router = useRouter()
   const [isLoading, setIsLoading] = useState(true)
   const [data, setData] = useState<User | null>(null)
 
@@ -28,6 +30,21 @@ export default function Profile() {
   if (isLoading) return null
   if (!data) throw new Error('')
 
+  async function handleDeleteUser() {
+    try {
+      const token = localStorage.getItem('token')
+      await api.delete(`/users/me`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      localStorage.clear()
+      router.push('/feed')
+      setTimeout(() => window.location.reload(), 100)
+    } catch (error) {
+      alert('Algo deu errado')
+      console.error(error)
+    }
+  }
+
   return (
     <>
       <Card.Container>
@@ -40,7 +57,10 @@ export default function Profile() {
         </Link>
 
         <div className='mt-8 flex gap-2'>
-          <Button className='self-end !w-44 !border-red-800 !bg-red-800 hover:!bg-red-900'>
+          <Button
+            className='self-end !w-44 !border-red-800 !bg-red-800 hover:!bg-red-900'
+            onClick={handleDeleteUser}
+          >
             Excluir minha conta
           </Button>
           <Button

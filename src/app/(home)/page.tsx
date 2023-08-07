@@ -15,6 +15,9 @@ export default function Home() {
         <Button href='/sign-in' variant='ghost'>
           Criar uma conta
         </Button>
+        <Button href='/feed' variant='ghost'>
+          Entrar como convidado
+        </Button>
       </div>
     </div>
   )
