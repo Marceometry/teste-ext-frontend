@@ -87,6 +87,9 @@ export function PostUserActions({ post, comments, updateComments }: Props) {
         </div>
 
         <span>
+          {post.views} {commentCount === 1 ? 'visualização' : 'visualizações'}
+        </span>
+        <span>
           {commentCount} {commentCount === 1 ? 'comentário' : 'comentários'}
         </span>
       </div>

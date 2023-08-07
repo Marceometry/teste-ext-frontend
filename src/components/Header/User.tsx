@@ -34,7 +34,7 @@ export function User() {
 
   function logout() {
     localStorage.clear()
-    router.push('/login')
+    router.push('/')
   }
 
   return (

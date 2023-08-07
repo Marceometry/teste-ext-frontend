@@ -9,6 +9,7 @@ export interface Post {
   title: string
   description: string
   imageUrl?: string
+  views: number
   likes: number
   dislikes: number
   comments: Comment[]
